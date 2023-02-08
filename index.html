@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Song To Cover</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- MDB -->
+  <link rel="stylesheet" href="css/mdb.min.css" />
+  <link rel="stylesheet" href="custom.css" />
+  <script type="module" src="https://unpkg.com/slider-color-picker"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+</head>
+
+<body>
+  <!-- Start your project here-->
+  <div class="container">
+    <div class="row">
+      <div class="col-md">
+        <img src="logo.svg" width="30%" style="margin-bottom: 20px"/>
+        <form onsubmit="return false">
+        <!-- 1. File upload -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">1. Загрузи аудиофайл</h5>
+         <!--<label class="form-label" for="audioFile">1. Загрузите аудиофайл</label>--> 
+          <input required type="file" accept="audio/*" class="form-control" id="audioFile" />
+          <div class="invalid-feedback">Example invalid form file feedback</div>
+        </div>
+        </div>
+        <!-- 2. Names and stuff -->
+        <div class="card">
+          <div class="card-body">
+        <!--<label class="form-label">2. Проверьте данные о треке или введите их</label>-->
+        <h5 class="card-title">2. Проверь данные о треке или введи их</h5>
+        <div class="row">
+          <div class="col-md-11">
+            <div class="form-outline">
+              <input required type="text" id="title" class="form-control space10" value=" "/>
+              <label class="form-label" for="title">Название</label>
+            </div>
+            </div>
+          <div class="col-md-1">
+            <input class="form-check-input" type="checkbox" id="cbTitle" value="" aria-label="..." style="margin-top:8px" />
+          </div>
+          </div>
+          
+
+          <div class="row">
+            <div class="col-md-11">
+              <div class="form-outline">
+                <input required type="text" id="artist" class="form-control space10" value=" "/>
+          <label class="form-label" for="artist">Исполнитель</label>
+              </div>
+              </div>
+            <div class="col-md-1">
+              <input class="form-check-input" type="checkbox" id="cbArtist" value="" aria-label="..." style="margin-top:8px" />
+            </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-11">
+                <div class="form-outline">
+                  <input required type="text" id="album" class="form-control space10" value=" "/>
+          <label class="form-label" for="album">Альбом</label>
+                </div>
+                </div>
+              <div class="col-md-1">
+                <input class="form-check-input" type="checkbox" id="cbAlbum" value="" aria-label="..." style="margin-top:8px" />
+              </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-11">
+                  <div class="form-outline">
+                    <input required id="num" class="form-control" value=" "/>
+                    <label class="form-label" for="num">#</label>
+                  </div>
+                  </div>
+                <div class="col-md-1">
+                  <input class="form-check-input" type="checkbox" id="cbNum" value="" aria-label="..." style="margin-top:8px"/>
+                </div>
+                </div>
+
+                <!--
+                <div class="row">
+                  <div class="col-md-3">
+                    <button type="button" id="lyrics" class="btn btn-tertiary btn-rounded" data-mdb-toggle="modal" data-mdb-target="#lyricsModal">
+                      <i class="fas fa-align-justify" style="margin-right: 10px;"></i>текст песни
+                    </button>
+                    </div>
+                  <div class="col-md-1">
+                    <input class="form-check-input" type="checkbox" id="cbLyrics" value="" aria-label="..." style="margin-top:8px"/>
+                  </div>
+                  </div>-->
+
+                
+        </div>
+        </div>
+
+        <div class="modal fade" id="lyricsModal" tabindex="-1" aria-labelledby="lyricsModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="lyricsModalLabel">Текст песни</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="form-outline">
+                  <textarea class="form-control" id="textAreaLyrics" rows="20"></textarea>
+                  <label class="form-label" for="textAreaExample">Слова (каждая строка с новой строки)</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-rounded" data-mdb-dismiss="modal">Отменить</button>
+                <button type="button" class="btn btn-primary btn-rounded">Сохранить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">3. Выбери цвет</h5>
+        <input required class="color-range" id="gencolor" type="range" min="0" max="360">
+        </div>
+        </div>
+        <button type="submit" id="generate" class="btn btn-primary btn-rounded">
+          <i class="fas fa-play" style="margin-right: 10px;"></i>запустить генератор
+        </button>
+        <button id="stop" class="btn btn-secondary btn-rounded">
+          <i class="fas fa-stop"></i>
+        </button>
+        <button id="save" class="btn btn-secondary btn-rounded">
+          <i class="fas fa-save"></i>
+        </button>
+      </form>
+      </div>
+      <div class="col-md">
+        <div id="covercontainer">
+        <main></main>
+      </div>
+      </div>
+    </div>
+    <!--<div class="d-flex justify-content-center align-items-center" style="height: 100vh">
+      <div class="text-center">
+        <img class="mb-4" src="https://v1.mdbootstrap.com/wp-content/uploads/2022/11/mdb-sale.png" />
+        <h5 class="mb-4">Only now, you can get all premium features & more with the best discounts of the year.</h5>
+        <p class="mb-4 fw-bold">All offers are LIMITED!</p>
+        <a class="btn btn-lg btn-danger fw-bold mb-3" style="background-color: #e70808;"
+          href="https://mdbootstrap.com/sale/november/" target="_blank" role="button">Check insane offers</a>
+        <hr>
+        <p class="mt-4 lead fw-bold">Publish your project with a single command.</p>
+        <p class="mt-2">Use <a href="https://mdbgo.com/" class="fw-bold" target="_blank"><u>MDB GO</u></a> for a free hosting & deployment tool</p>
+      </div>
+    </div>-->
+  </div>
+  <!-- End your project here-->
+
+  <!-- MDB -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Custom scripts -->
+
+  <script>
+  let colorRange = document.querySelector('.color-range')
+  let genButton = document.querySelector('#generate')
+let randomRange = Math.floor(360*Math.random())
+
+colorRange.addEventListener('input', function(e) {
+  let hue = this.value //((this.value/100)*360).toFixed(0)
+  let hsl = "hsl("+ hue + ", 100%, 50%)"
+  let bgHsl = "hsl("+ hue + ", 100%, 95%)"
+  colorRange.style.color = hsl
+});
+
+colorRange.value = randomRange;
+let event = new Event('input');
+colorRange.dispatchEvent(event);
+
+
+  const jsmediatags = window.jsmediatags;
+  document.querySelector("#audioFile").addEventListener("change", (event) => {
+
+const song_meta = event.target.files[0]
+jsmediatags.read(song_meta, {
+  onSuccess: function(tag) {
+    document.querySelector("#title").value = tag.tags.title
+    document.querySelector("#artist").value = tag.tags.artist
+    document.querySelector("#album").value = tag.tags.album
+    document.querySelector("#num").value = tag.tags.track
+    },
+    onError: function(error) {
+    }
+})
+})
+
+
+</script>
+<script src="sketch.js"></script>
+  
+</body>
+
+</html>
