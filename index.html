@@ -35,8 +35,8 @@
         <!-- 1. File upload -->
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">1. Загрузи аудиофайл</h5>
-         <!--<label class="form-label" for="audioFile">1. Загрузите аудиофайл</label>--> 
+            <h5 class="card-title">1. Upload an audiofile</h5>
+         <!--<label class="form-label" for="audioFile">1. Upload an audiofile</label>--> 
           <input required type="file" accept="audio/*" class="form-control" id="audioFile" />
           <div class="invalid-feedback">Example invalid form file feedback</div>
         </div>
@@ -44,13 +44,13 @@
         <!-- 2. Names and stuff -->
         <div class="card">
           <div class="card-body">
-        <!--<label class="form-label">2. Проверьте данные о треке или введите их</label>-->
-        <h5 class="card-title">2. Проверь данные о треке или введи их</h5>
+        <!--<label class="form-label">2. Review the track's metadata or enter from scratch. <br> Check the data you want to be included in the cover.</label>-->
+        <h5 class="card-title">2. Review the track's metadata or enter from scratch. <br> Check the data you want to be included in the cover.</h5>
         <div class="row">
           <div class="col-md-11">
             <div class="form-outline">
               <input required type="text" id="title" class="form-control space10" value=" "/>
-              <label class="form-label" for="title">Название</label>
+              <label class="form-label" for="title">Title</label>
             </div>
             </div>
           <div class="col-md-1">
@@ -63,7 +63,7 @@
             <div class="col-md-11">
               <div class="form-outline">
                 <input required type="text" id="artist" class="form-control space10" value=" "/>
-          <label class="form-label" for="artist">Исполнитель</label>
+          <label class="form-label" for="artist">Artist</label>
               </div>
               </div>
             <div class="col-md-1">
@@ -75,7 +75,7 @@
               <div class="col-md-11">
                 <div class="form-outline">
                   <input required type="text" id="album" class="form-control space10" value=" "/>
-          <label class="form-label" for="album">Альбом</label>
+          <label class="form-label" for="album">Album</label>
                 </div>
                 </div>
               <div class="col-md-1">
@@ -134,12 +134,12 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">3. Выбери цвет</h5>
+            <h5 class="card-title">3. Choose a color</h5>
         <input required class="color-range" id="gencolor" type="range" min="0" max="360">
         </div>
         </div>
         <button type="submit" id="generate" class="btn btn-primary btn-rounded">
-          <i class="fas fa-play" style="margin-right: 10px;"></i>запустить генератор
+          <i class="fas fa-play" style="margin-right: 10px;"></i>generate
         </button>
         <button id="stop" class="btn btn-secondary btn-rounded">
           <i class="fas fa-stop"></i>
